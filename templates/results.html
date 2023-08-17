@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Review Page</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+
+      <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+</head>
+
+<body>
+
+  <div class="table-users">
+   <div class="header">Reviews</div>
+
+   <table cellspacing="0">
+      <tr>
+         <th>Date</th>
+         <th>Name</th>
+         <th>Comment Header</th>
+         <th width="230">Comments</th>
+         <th>Rating</th>
+      </tr>
+        {% for item in data_subset %}
+    <tr>
+        <td>{{ item['Date'] }}</td>
+        <td>{{ item['Name'] }}</td>
+        <td>{{ item['Comment Header'] }}</td>
+        <td>{{ item['Comment'] }}</td>
+        <td>{{ item['Ratings'] }}</td>
+        {% endfor %}
+   </table>
+</div>
+
+
+
+</body>
+
+</html>
