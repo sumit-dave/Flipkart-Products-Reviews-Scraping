@@ -26,7 +26,7 @@ def reviews():
             page_code = bs(product_page.text,"html.parser")  # retrieved object data and beautified in perfect understandable HTML code
             products = page_code.find_all("div", {"class": "_1AtVbE col-12-12"})
             # retrieved all the products div call and saved in products
-            del products[0:2]  # deleted some starting line due to error in some poducts
+            del products[0:3]  # deleted some starting line due to error in some poducts
 
             product_link = products[0].div.div.div.a['href']  # Choosen 2nd product of every search we do and pulled out the ref. link
 
@@ -108,9 +108,9 @@ def reviews():
                     }
                     data_new.append(review_data)
             df = pd.DataFrame(data_new)  # data_new converted in data frame and saved as json file
-            df.to_json(r"C:\Users\sumit\OneDrive\Desktop\Data Science Folder\Projects_Tasks\Flipkart_Products-info_scraping\{}.json".format(query))
+            df.to_excel(r"C:\Users\sumit\OneDrive\Desktop\Data Science Folder\Projects_Tasks\Flipkart Products Reviews Scrapping\{}.xlsx".format(query))
 
-            logging.info( "Scraping completed successfully")  # indication to confirm creating file task
+            logging.info("Scraping completed successfully")  # indication to confirm creating file task
 
             # here new webpage will get hit and will show all data in table format
             return render_template('results.html', data_subset=data_new[0:-1])
